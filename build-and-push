@@ -1,0 +1,8 @@
+#!/bin/sh
+
+LATEST_VERSION="2.6.4"
+
+docker build --build-arg ACME_SH_VERSION="$LATEST_VERSION" -t xfrocks/docker-acme.sh . \
+	&& docker build --build-arg ACME_SH_VERSION="$LATEST_VERSION" -t "xfrocks/docker-acme.sh:$LATEST_VERSION" . \
+	&& docker push xfrocks/docker-acme.sh \
+	&& docker push "xfrocks/docker-acme.sh:$LATEST_VERSION"
