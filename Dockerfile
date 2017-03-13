@@ -15,6 +15,8 @@ RUN apk add --no-cache --update $ACME_SH_BUILD_PACKAGES $ACME_SH_RUN_PACKAGES \
 	&& git clone https://github.com/Neilpang/acme.sh.git \
 	&& cd ./acme.sh \
 	&& git -c advice.detachedHead=false checkout ${ACME_SH_VERSION} \
+	&& git config user.email "daohoangson@gmail.com" \
+	&& git cherry-pick 81532f375ea6f9b55e19b07bbe1c106f3d164b19 \
 	&& ./acme.sh --install --nocron \
 	&& apk del $ACME_SH_BUILD_PACKAGES \
 	&& (rm "/tmp/"* 2>/dev/null || true) \

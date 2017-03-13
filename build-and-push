@@ -1,7 +1,10 @@
 #!/bin/sh
 
 IMAGE_NAME="xfrocks/acme.sh"
+
 LATEST_VERSION="2.6.6"
+# Chery-picked fov 2.6.6:
+#     81532f375ea6f9b55e19b07bbe1c106f3d164b19
 
 docker build \
 	--build-arg ACME_SH_VERSION="$LATEST_VERSION" \
