@@ -63,15 +63,13 @@ docker run --rm -v "$PWD:/acme" xfrocks/acme.sh --debug --staging \
 
 # Issue a certificate using registered account and existing CSR.
 # Below example uses DNS challenge with CloudFlare API.
-# It's possible to issue without registering account / generate CSR,
-# those steps will be done automatically with default settings.
 docker run --rm -v "$PWD:/acme" \
 	-e CF_Key="$CLOUDFLARE_KEY" \
 	-e CF_Email="$EMAIL" \
 	xfrocks/acme.sh --debug --staging \
-		--issue \
+		--signcsr \
 		--dns dns_cf \
-		--domain "$DOMAIN" --domain "$DOMAIN_ALT" \
+		--csr "./$DOMAIN/$DOMAIN.csr" \
 		--days "$DOMAIN_DAYS_TO_RENEW"
 
 # List our certificates
