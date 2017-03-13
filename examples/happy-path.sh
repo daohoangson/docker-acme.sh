@@ -8,7 +8,7 @@ DOMAIN=${DOMAIN:-'domain.com'}
 DOMAIN_ALT=${DOMAIN_ALT:-'www.domain.com'}
 DOMAIN_KEY_LENGTH=${DOMAIN_KEY_LENGTH:-'3072'}
 DOMAIN_DAYS_TO_RENEW=${DOMAIN_DAYS_TO_RENEW:-'60'}
-HR80=''################################################################################''
+HR80='################################################################################'
 
 if [ -z "$CLOUDFLARE_KEY" ]; then
 	echo 'CLOUDFLARE_KEY must be set'
