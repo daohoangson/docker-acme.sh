@@ -68,7 +68,7 @@ docker run --rm -v "$PWD:/acme" xfrocks/acme.sh --debug --staging \
 docker run --rm -v "$PWD:/acme" \
 	-e CF_Key="$CLOUDFLARE_KEY" \
 	-e CF_Email="$EMAIL" \
-	xfrocks/docker-acme.sh --debug --staging \
+	xfrocks/acme.sh --debug --staging \
 		--issue \
 		--dns dns_cf \
 		--domain "$DOMAIN" --domain "$DOMAIN_ALT" \
