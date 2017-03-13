@@ -12,5 +12,5 @@ docker build \
 	-t "$IMAGE_NAME:$LATEST_VERSION" \
 	.
 
-docker push "$IMAGE_NAME" \
+docker push "$IMAGE_NAME"
 docker push "$IMAGE_NAME:$LATEST_VERSION"
