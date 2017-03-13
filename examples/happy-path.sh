@@ -13,7 +13,7 @@ DOMAIN_DAYS_TO_RENEW=60
 CLOUDFLARE_KEY='xxx'
 
 # Create a domain key.
-docker run --rm -v "$PWD:/acme" xfrocks/docker-acme.sh \
+docker run --rm -v "$PWD:/acme" xfrocks/acme.sh \
 	"$DEBUG" "$STAGING" \
 	--createDomainKey \
 	--keylength  "$DOMAIN_KEY_LENGTH" \
@@ -21,25 +21,25 @@ docker run --rm -v "$PWD:/acme" xfrocks/docker-acme.sh \
 
 # Create a certificate signing request from existing domain key.
 # Multiple alternative domains can be included within one CSR.
-docker run --rm -v "$PWD:/acme" xfrocks/docker-acme.sh \
+docker run --rm -v "$PWD:/acme" xfrocks/acme.sh \
 	"$DEBUG" "$STAGING" \
 	--createCSR \
 	--domain "$DOMAIN" --domain "$DOMAIN_ALT"
 
 # Show the CSR.
-docker run --rm -v "$PWD:/acme" xfrocks/docker-acme.sh \
+docker run --rm -v "$PWD:/acme" xfrocks/acme.sh \
 	"$DEBUG" "$STAGING" \
 	--showcsr \
 	--csr "./$DOMAIN/$DOMAIN.csr"
 
 # Create an account key, should target staging server for testing.
-docker run --rm -v "$PWD:/acme" xfrocks/docker-acme.sh \
+docker run --rm -v "$PWD:/acme" xfrocks/acme.sh \
 	"$DEBUG" "$STAGING" \
 	--createAccountKey \
 	--accountkeylength "$ACCOUNT_KEY_LENGTH"
 
 # Register the account using existing account key.
-docker run --rm -v "$PWD:/acme" xfrocks/docker-acme.sh \
+docker run --rm -v "$PWD:/acme" xfrocks/acme.sh \
 	"$DEBUG" "$STAGING" \
 	--registeraccount \
 	--accountemail "$EMAIL"
@@ -59,13 +59,13 @@ docker run --rm -v "$PWD:/acme" \
 		--days "$DOMAIN_DAYS_TO_RENEW"
 
 # List our certificates
-docker run --rm -v "$PWD:/acme" xfrocks/docker-acme.sh \
+docker run --rm -v "$PWD:/acme" xfrocks/acme.sh \
 	"$DEBUG" "$STAGING" \
 	--list
 
 # Renew certificates.
 # Use --force to renew right away otherwise this command will most likely do nothing.
-docker run --rm -v "$PWD:/acme" xfrocks/docker-acme.sh \
+docker run --rm -v "$PWD:/acme" xfrocks/acme.sh \
 	"$DEBUG" "$STAGING" \
 	--renewAll \
 	--days "$DOMAIN_DAYS_TO_RENEW"

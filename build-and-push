@@ -1,8 +1,13 @@
 #!/bin/sh
 
-LATEST_VERSION="2.6.4"
+IMAGE_NAME="xfrocks/acme.sh"
+LATEST_VERSION="2.6.6"
 
-docker build --build-arg ACME_SH_VERSION="$LATEST_VERSION" -t xfrocks/docker-acme.sh . \
-	&& docker build --build-arg ACME_SH_VERSION="$LATEST_VERSION" -t "xfrocks/docker-acme.sh:$LATEST_VERSION" . \
-	&& docker push xfrocks/docker-acme.sh \
-	&& docker push "xfrocks/docker-acme.sh:$LATEST_VERSION"
+docker build \
+	--build-arg ACME_SH_VERSION="$LATEST_VERSION" \
+	-t "$IMAGE_NAME" \
+	-t "$IMAGE_NAME:$LATEST_VERSION" \
+	.
+
+docker push "$IMAGE_NAME" \
+docker push "$IMAGE_NAME:$LATEST_VERSION"
