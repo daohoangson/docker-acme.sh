@@ -1,3 +1,5 @@
+*This is deprecated. Use the official image [neilpang/acme.sh](https://hub.docker.com/r/neilpang/acme.sh/) for better support.*
+
 # docker pull xfrocks/acme.sh
 Lightweight acme.sh container, about 10MB in image size.
 
